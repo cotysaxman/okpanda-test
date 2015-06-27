@@ -1,0 +1,24 @@
+.timeSlot {
+    background-color: red;
+    width: 10%;
+}
+
+.timeSlot.open {
+    background-color: green;
+}
+
+.timeSlot.reserved {
+    background-color: yellow;
+}
+
+.hide {
+    display: none;
+}
+.show {
+    display: block;
+}
+
+#newUserButton {
+    border: 1px black;
+    background-color: aqua;
+}

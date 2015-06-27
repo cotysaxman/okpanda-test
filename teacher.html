@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="teacher.css">
+</head>
+<body>
+<h1>demo database for students/teachers</h1>
+<p>There is one student account. Click 'student mode' to access it and then select a teacher from the list.</p>
+<p>To use teacher mode, select a teacher from the list.</p>
+<p>To create a new teacher, type a name in the box and click 'new user'.</p>
+<p>To modify the schedule. click a cell. Remember to 'save'!</p>
+<p>Refresh the page to return to the start and see changes reflected in the data.</p>
+<p>Alerts show the data being loaded/saved</p>
+    <div id="userSelect">
+        <div id="newUserButton" onclick="addUser()">New User</div><input type="text" id="newUserName">
+        <br>
+        <div id="userList"></div>
+        <div id="studentButton" onclick="studentMode()">STUDENT MODE</div>
+    </div>
+
+    <div id="saveButton" class="hide">SAVE</div>
+
+    <table id="schedule" class="hide">
+        <tr>
+            <th>TIME</th><th>Sunday</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th>
+        </tr>
+        <tr>
+            <th>00:00-00:30</th><td class="timeSlot" id="00"></td><td class="timeSlot" id="10"></td><td class="timeSlot" id="20"></td><td class="timeSlot" id="30"></td><td class="timeSlot" id="40"></td><td class="timeSlot" id="50"></td><td class="timeSlot" id="60"></td>
+        </tr>
+        <tr>
+            <th>00:30-01:00</th><td class="timeSlot" id="01"></td><td class="timeSlot" id="11"></td><td class="timeSlot" id="21"></td><td class="timeSlot" id="31"></td><td class="timeSlot" id="41"></td><td class="timeSlot" id="51"></td><td class="timeSlot" id="61"></td>
+        </tr>
+        <tr>
+            <th>01:00-01:30</th><td class="timeSlot" id="02"></td><td class="timeSlot" id="12"></td><td class="timeSlot" id="22"></td><td class="timeSlot" id="32"></td><td class="timeSlot" id="42"></td><td class="timeSlot" id="52"></td><td class="timeSlot" id="62"></td>
+        </tr>
+        <tr>
+            <th>01:30-02:00</th><td class="timeSlot" id="03"></td><td class="timeSlot" id="13"></td><td class="timeSlot" id="23"></td><td class="timeSlot" id="33"></td><td class="timeSlot" id="43"></td><td class="timeSlot" id="53"></td><td class="timeSlot" id="63"></td>
+        </tr>
+        <tr>
+            <th>02:00-02:30</th><td class="timeSlot" id="04"></td><td class="timeSlot" id="14"></td><td class="timeSlot" id="24"></td><td class="timeSlot" id="34"></td><td class="timeSlot" id="44"></td><td class="timeSlot" id="54"></td><td class="timeSlot" id="64"></td>
+        </tr>
+        <tr>
+            <th>02:30-03:00</th><td class="timeSlot" id="05"></td><td class="timeSlot" id="15"></td><td class="timeSlot" id="25"></td><td class="timeSlot" id="35"></td><td class="timeSlot" id="45"></td><td class="timeSlot" id="55"></td><td class="timeSlot" id="65"></td>
+        </tr>
+        <tr>
+            <th>03:00-03:30</th><td class="timeSlot" id="06"></td><td class="timeSlot" id="16"></td><td class="timeSlot" id="26"></td><td class="timeSlot" id="36"></td><td class="timeSlot" id="46"></td><td class="timeSlot" id="56"></td><td class="timeSlot" id="66"></td>
+        </tr>
+        <tr>
+            <th>03:30-04:00</th><td class="timeSlot" id="07"></td><td class="timeSlot" id="17"></td><td class="timeSlot" id="27"></td><td class="timeSlot" id="37"></td><td class="timeSlot" id="47"></td><td class="timeSlot" id="57"></td><td class="timeSlot" id="67"></td>
+        </tr>
+        <tr>
+            <th>04:00-04:30</th><td class="timeSlot" id="08"></td><td class="timeSlot" id="18"></td><td class="timeSlot" id="28"></td><td class="timeSlot" id="38"></td><td class="timeSlot" id="48"></td><td class="timeSlot" id="58"></td><td class="timeSlot" id="68"></td>
+        </tr>
+        <tr>
+            <th>04:30-05:00</th><td class="timeSlot" id="09"></td><td class="timeSlot" id="19"></td><td class="timeSlot" id="29"></td><td class="timeSlot" id="39"></td><td class="timeSlot" id="49"></td><td class="timeSlot" id="59"></td><td class="timeSlot" id="69"></td>
+        </tr>
+        <tr>
+            <th>05:00-05:30</th><td class="timeSlot" id="010"></td><td class="timeSlot" id="110"></td><td class="timeSlot" id="210"></td><td class="timeSlot" id="310"></td><td class="timeSlot" id="410"></td><td class="timeSlot" id="510"></td><td class="timeSlot" id="610"></td>
+        </tr>
+        <tr>
+            <th>05:30-06:00</th><td class="timeSlot" id="011"></td><td class="timeSlot" id="111"></td><td class="timeSlot" id="211"></td><td class="timeSlot" id="311"></td><td class="timeSlot" id="411"></td><td class="timeSlot" id="511"></td><td class="timeSlot" id="611"></td>
+        </tr>
+        <tr>
+            <th>06:00-06:30</th><td class="timeSlot" id="012"></td><td class="timeSlot" id="112"></td><td class="timeSlot" id="212"></td><td class="timeSlot" id="312"></td><td class="timeSlot" id="412"></td><td class="timeSlot" id="512"></td><td class="timeSlot" id="612"></td>
+        </tr>
+        <tr>
+            <th>06:30-07:00</th><td class="timeSlot" id="013"></td><td class="timeSlot" id="113"></td><td class="timeSlot" id="213"></td><td class="timeSlot" id="313"></td><td class="timeSlot" id="413"></td><td class="timeSlot" id="513"></td><td class="timeSlot" id="613"></td>
+        </tr>
+        <tr>
+            <th>07:00-07:30</th><td class="timeSlot" id="014"></td><td class="timeSlot" id="114"></td><td class="timeSlot" id="214"></td><td class="timeSlot" id="314"></td><td class="timeSlot" id="414"></td><td class="timeSlot" id="514"></td><td class="timeSlot" id="614"></td>
+        </tr>
+        <tr>
+            <th>07:30-08:00</th><td class="timeSlot" id="015"></td><td class="timeSlot" id="115"></td><td class="timeSlot" id="215"></td><td class="timeSlot" id="315"></td><td class="timeSlot" id="415"></td><td class="timeSlot" id="515"></td><td class="timeSlot" id="615"></td>
+        </tr>
+        <tr>
+            <th>08:00-08:30</th><td class="timeSlot" id="016"></td><td class="timeSlot" id="116"></td><td class="timeSlot" id="216"></td><td class="timeSlot" id="316"></td><td class="timeSlot" id="416"></td><td class="timeSlot" id="516"></td><td class="timeSlot" id="616"></td>
+        </tr>
+        <tr>
+            <th>08:30-09:00</th><td class="timeSlot" id="017"></td><td class="timeSlot" id="117"></td><td class="timeSlot" id="217"></td><td class="timeSlot" id="317"></td><td class="timeSlot" id="417"></td><td class="timeSlot" id="517"></td><td class="timeSlot" id="617"></td>
+        </tr>
+        <tr>
+            <th>09:00-09:30</th><td class="timeSlot" id="018"></td><td class="timeSlot" id="118"></td><td class="timeSlot" id="218"></td><td class="timeSlot" id="318"></td><td class="timeSlot" id="418"></td><td class="timeSlot" id="518"></td><td class="timeSlot" id="618"></td>
+        </tr>
+        <tr>
+            <th>09:30-10:00</th><td class="timeSlot" id="019"></td><td class="timeSlot" id="119"></td><td class="timeSlot" id="219"></td><td class="timeSlot" id="319"></td><td class="timeSlot" id="419"></td><td class="timeSlot" id="519"></td><td class="timeSlot" id="619"></td>
+        </tr>
+        <tr>
+            <th>10:00-10:30</th><td class="timeSlot" id="020"></td><td class="timeSlot" id="120"></td><td class="timeSlot" id="220"></td><td class="timeSlot" id="320"></td><td class="timeSlot" id="420"></td><td class="timeSlot" id="520"></td><td class="timeSlot" id="620"></td>
+        </tr>
+        <tr>
+            <th>10:30-11:00</th><td class="timeSlot" id="021"></td><td class="timeSlot" id="121"></td><td class="timeSlot" id="221"></td><td class="timeSlot" id="321"></td><td class="timeSlot" id="421"></td><td class="timeSlot" id="521"></td><td class="timeSlot" id="621"></td>
+        </tr>
+        <tr>
+            <th>11:00-11:30</th><td class="timeSlot" id="022"></td><td class="timeSlot" id="122"></td><td class="timeSlot" id="222"></td><td class="timeSlot" id="322"></td><td class="timeSlot" id="422"></td><td class="timeSlot" id="522"></td><td class="timeSlot" id="622"></td>
+        </tr>
+        <tr>
+            <th>11:30-12:00</th><td class="timeSlot" id="023"></td><td class="timeSlot" id="123"></td><td class="timeSlot" id="223"></td><td class="timeSlot" id="323"></td><td class="timeSlot" id="423"></td><td class="timeSlot" id="523"></td><td class="timeSlot" id="623"></td>
+        </tr>
+        <tr>
+            <th>12:00-12:30</th><td class="timeSlot" id="024"></td><td class="timeSlot" id="124"></td><td class="timeSlot" id="224"></td><td class="timeSlot" id="324"></td><td class="timeSlot" id="424"></td><td class="timeSlot" id="524"></td><td class="timeSlot" id="624"></td>
+        </tr>
+        <tr>
+            <th>12:30-13:00</th><td class="timeSlot" id="025"></td><td class="timeSlot" id="125"></td><td class="timeSlot" id="225"></td><td class="timeSlot" id="325"></td><td class="timeSlot" id="425"></td><td class="timeSlot" id="525"></td><td class="timeSlot" id="625"></td>
+        </tr>
+        <tr>
+            <th>13:00-13:30</th><td class="timeSlot" id="026"></td><td class="timeSlot" id="126"></td><td class="timeSlot" id="226"></td><td class="timeSlot" id="326"></td><td class="timeSlot" id="426"></td><td class="timeSlot" id="526"></td><td class="timeSlot" id="626"></td>
+        </tr>
+        <tr>
+            <th>13:30-14:00</th><td class="timeSlot" id="027"></td><td class="timeSlot" id="127"></td><td class="timeSlot" id="227"></td><td class="timeSlot" id="327"></td><td class="timeSlot" id="427"></td><td class="timeSlot" id="527"></td><td class="timeSlot" id="627"></td>
+        </tr>
+        <tr>
+            <th>14:00-14:30</th><td class="timeSlot" id="028"></td><td class="timeSlot" id="128"></td><td class="timeSlot" id="228"></td><td class="timeSlot" id="328"></td><td class="timeSlot" id="428"></td><td class="timeSlot" id="528"></td><td class="timeSlot" id="628"></td>
+        </tr>
+        <tr>
+            <th>14:30-15:00</th><td class="timeSlot" id="029"></td><td class="timeSlot" id="129"></td><td class="timeSlot" id="229"></td><td class="timeSlot" id="329"></td><td class="timeSlot" id="429"></td><td class="timeSlot" id="529"></td><td class="timeSlot" id="629"></td>
+        </tr>
+        <tr>
+            <th>15:00-15:30</th><td class="timeSlot" id="030"></td><td class="timeSlot" id="130"></td><td class="timeSlot" id="230"></td><td class="timeSlot" id="330"></td><td class="timeSlot" id="430"></td><td class="timeSlot" id="530"></td><td class="timeSlot" id="630"></td>
+        </tr>
+        <tr>
+            <th>15:30-16:00</th><td class="timeSlot" id="031"></td><td class="timeSlot" id="131"></td><td class="timeSlot" id="231"></td><td class="timeSlot" id="331"></td><td class="timeSlot" id="431"></td><td class="timeSlot" id="531"></td><td class="timeSlot" id="631"></td>
+        </tr>
+        <tr>
+            <th>16:00-16:30</th><td class="timeSlot" id="032"></td><td class="timeSlot" id="132"></td><td class="timeSlot" id="232"></td><td class="timeSlot" id="332"></td><td class="timeSlot" id="432"></td><td class="timeSlot" id="532"></td><td class="timeSlot" id="632"></td>
+        </tr>
+        <tr>
+            <th>16:30-17:00</th><td class="timeSlot" id="033"></td><td class="timeSlot" id="133"></td><td class="timeSlot" id="233"></td><td class="timeSlot" id="333"></td><td class="timeSlot" id="433"></td><td class="timeSlot" id="533"></td><td class="timeSlot" id="633"></td>
+        </tr>
+        <tr>
+            <th>17:00-17:30</th><td class="timeSlot" id="034"></td><td class="timeSlot" id="134"></td><td class="timeSlot" id="234"></td><td class="timeSlot" id="334"></td><td class="timeSlot" id="434"></td><td class="timeSlot" id="534"></td><td class="timeSlot" id="634"></td>
+        </tr>
+        <tr>
+            <th>17:30-18:00</th><td class="timeSlot" id="035"></td><td class="timeSlot" id="135"></td><td class="timeSlot" id="235"></td><td class="timeSlot" id="335"></td><td class="timeSlot" id="435"></td><td class="timeSlot" id="535"></td><td class="timeSlot" id="635"></td>
+        </tr>
+        <tr>
+            <th>18:00-18:30</th><td class="timeSlot" id="036"></td><td class="timeSlot" id="136"></td><td class="timeSlot" id="236"></td><td class="timeSlot" id="336"></td><td class="timeSlot" id="436"></td><td class="timeSlot" id="536"></td><td class="timeSlot" id="636"></td>
+        </tr>
+        <tr>
+            <th>18:30-19:00</th><td class="timeSlot" id="037"></td><td class="timeSlot" id="137"></td><td class="timeSlot" id="237"></td><td class="timeSlot" id="337"></td><td class="timeSlot" id="437"></td><td class="timeSlot" id="537"></td><td class="timeSlot" id="637"></td>
+        </tr>
+        <tr>
+            <th>19:00-19:30</th><td class="timeSlot" id="038"></td><td class="timeSlot" id="138"></td><td class="timeSlot" id="238"></td><td class="timeSlot" id="338"></td><td class="timeSlot" id="438"></td><td class="timeSlot" id="538"></td><td class="timeSlot" id="638"></td>
+        </tr>
+        <tr>
+            <th>19:30-20:00</th><td class="timeSlot" id="039"></td><td class="timeSlot" id="139"></td><td class="timeSlot" id="239"></td><td class="timeSlot" id="339"></td><td class="timeSlot" id="439"></td><td class="timeSlot" id="539"></td><td class="timeSlot" id="639"></td>
+        </tr>
+        <tr>
+            <th>20:00-20:30</th><td class="timeSlot" id="040"></td><td class="timeSlot" id="140"></td><td class="timeSlot" id="240"></td><td class="timeSlot" id="340"></td><td class="timeSlot" id="440"></td><td class="timeSlot" id="540"></td><td class="timeSlot" id="640"></td>
+        </tr>
+        <tr>
+            <th>20:30-21:00</th><td class="timeSlot" id="041"></td><td class="timeSlot" id="141"></td><td class="timeSlot" id="241"></td><td class="timeSlot" id="341"></td><td class="timeSlot" id="441"></td><td class="timeSlot" id="541"></td><td class="timeSlot" id="641"></td>
+        </tr>
+        <tr>
+            <th>21:00-21:30</th><td class="timeSlot" id="042"></td><td class="timeSlot" id="142"></td><td class="timeSlot" id="242"></td><td class="timeSlot" id="342"></td><td class="timeSlot" id="442"></td><td class="timeSlot" id="542"></td><td class="timeSlot" id="642"></td>
+        </tr>
+        <tr>
+            <th>21:30-22:00</th><td class="timeSlot" id="043"></td><td class="timeSlot" id="143"></td><td class="timeSlot" id="243"></td><td class="timeSlot" id="343"></td><td class="timeSlot" id="443"></td><td class="timeSlot" id="543"></td><td class="timeSlot" id="643"></td>
+        </tr>
+        <tr>
+            <th>22:00-22:30</th><td class="timeSlot" id="044"></td><td class="timeSlot" id="144"></td><td class="timeSlot" id="244"></td><td class="timeSlot" id="344"></td><td class="timeSlot" id="444"></td><td class="timeSlot" id="544"></td><td class="timeSlot" id="644"></td>
+        </tr>
+        <tr>
+            <th>22:30-23:00</th><td class="timeSlot" id="045"></td><td class="timeSlot" id="145"></td><td class="timeSlot" id="245"></td><td class="timeSlot" id="345"></td><td class="timeSlot" id="445"></td><td class="timeSlot" id="545"></td><td class="timeSlot" id="645"></td>
+        </tr>
+        <tr>
+            <th>23:00-23:30</th><td class="timeSlot" id="046"></td><td class="timeSlot" id="146"></td><td class="timeSlot" id="246"></td><td class="timeSlot" id="346"></td><td class="timeSlot" id="446"></td><td class="timeSlot" id="546"></td><td class="timeSlot" id="646"></td>
+        </tr>
+        <tr>
+            <th>23:30-00:00</th><td class="timeSlot" id="047"></td><td class="timeSlot" id="147"></td><td class="timeSlot" id="247"></td><td class="timeSlot" id="347"></td><td class="timeSlot" id="447"></td><td class="timeSlot" id="547"></td><td class="timeSlot" id="647"></td>
+        </tr>
+
+    </table>
+
+    <script type="text/javascript" src="teacher.js"></script>
+</body>
+</html>
